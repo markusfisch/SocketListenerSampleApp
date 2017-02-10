@@ -82,7 +82,7 @@ public class SocketListeningService extends Service {
 		try {
 			socket = new Socket(host, port);
 			BufferedReader in = new BufferedReader(
-					new InputStreamReader(socket.getInputStream()));
+					new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
 			for (String message; (message = in.readLine()) != null; ) {
 				listener.onMessage(message);

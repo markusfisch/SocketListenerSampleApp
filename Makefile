@@ -9,7 +9,10 @@ debug:
 lint:
 	./gradlew lintDebug
 
-release:
+findbugs:
+	./gradlew findBugs
+
+release: lint findbugs
 	@./gradlew \
 		assembleRelease \
 		-Pandroid.injected.signing.store.file=$(ANDROID_KEYFILE) \
