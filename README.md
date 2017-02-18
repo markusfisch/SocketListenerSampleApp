@@ -1,11 +1,34 @@
 # Socket Listener Sample App
 
-Open a socket to a given server and keep it open.
-Read line by line from the socket and show the read data in the app.
+Open a socket to some server and try to reconnect if the socket has closed.
 
-Can be used as a simple push message replacement for a local WiFi.
+Read a line from that socket and show it in the app.
+
+Can be used as a simple push message replacement in a local WiFi.
 
 *This is a demo!*
 
-Any real world app should start/stop the listening services in response
+A real world app should start/stop the listening service in response
 to WiFi connectivity to save battery.
+
+## How To Use
+
+1. Insert the address of your server in app/SocketListenerApp.java:
+
+```java
+Intent intent = new Intent(this, SocketListeningService.class);
+intent.putExtra(SocketListeningService.HOST, "10.200.1.239");
+intent.putExtra(SocketListeningService.PORT, 7575);
+startService(intent);
+```
+
+2. Open a socket on that machine and listen on it:
+
+```sh
+$ netcat -l 7575
+```
+
+`netcat` will wait for you to write something.
+
+3. Run the app
+4. Write something after the `netcat` command and hit Enter
