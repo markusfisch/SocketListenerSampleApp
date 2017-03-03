@@ -32,3 +32,8 @@ $ netcat -l 7575
 
 * Run the app
 * Write something after the `netcat` command and hit Enter
+
+License
+-------
+
+Public Domain. Do whatever you like.
